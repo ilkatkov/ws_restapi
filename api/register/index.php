@@ -1,11 +1,11 @@
 <?php
 include_once "../functions/mysql.php";
 
-$first_name = $_GET['first_name'];
-$last_name = $_GET['last_name'];
-$phone = $_GET['phone'];
-$password = $_GET['password'];
-$document_number = $_GET['document_number'];
+$first_name = $_POST['first_name'];
+$last_name = $_POST['last_name'];
+$phone = $_POST['phone'];
+$password = $_POST['password'];
+$document_number = $_POST['document_number'];
 
 
 if (!empty($first_name) && !empty($last_name) && !empty($phone) && !empty($document_number) && strlen($document_number) == 10 && !empty($password)) {
