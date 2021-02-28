@@ -6,8 +6,8 @@ function connectDB()
 
     // настройки БД
     $host = 'localhost';
-    $user = 'usr-freelunch';
-    $password = 'UsrFr2020';
+    $user = 'root';
+    $password = 'password';
     $db_name = 'ws_rest_api';
 
     // подключение к БД и установка кодировки
