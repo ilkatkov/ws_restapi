@@ -76,6 +76,7 @@ function booking($flight_from, $flight_back){
     $code = generateCode();
     $link = connectDB();
     $query_insert = "INSERT INTO bookings (flight_from, flight_back, date_from, date_back, code, created_at, updated_at) VALUES ('" . mysqli_real_escape_string($link, $id_from) . "', '" . mysqli_real_escape_string($link, $id_back) . "', '" . mysqli_real_escape_string($link, $date_from) . "', '" . mysqli_real_escape_string($link, $date_back) . "', '" . mysqli_real_escape_string($link, $code) . "', '" . mysqli_real_escape_string($link, $time) . "', '" . mysqli_real_escape_string($link, $time) . "')";
+    
     mysqli_query($link, $query_insert);
     // var_dump($code);
     return $code;
