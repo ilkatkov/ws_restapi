@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking</title>
+</head>
+
+<body>
+    <form action="booking/" method="POST">
+        <table>
+            <tr>
+                <td colspan="2">flight_from</td>
+            </tr>
+            <tr>
+                <td>id</td>
+                <td><input type="text" name="flight_from[id]"></td>
+            </tr>
+            <tr>
+                <td>date</td>
+                <td><input type="text" name="flight_from[date]"></td>
+            </tr>
+            <tr>
+                <td colspan="2">flight_back</td>
+            </tr>
+            <tr>
+                <td>id</td>
+                <td><input type="text" name="flight_back[id]"></td>
+            </tr>
+            <tr>
+                <td>date</td>
+                <td><input type="text" name="flight_back[date]"></td>
+            </tr>
+            <tr>
+                <td colspan="2">passenger</td>
+            </tr>
+            <tr>
+                <td>first_name</td>
+                <td><input type="text" name="passengers[0][[first_name]"></td>
+            </tr>
+            <tr>
+                <td>last_name</td>
+                <td><input type="text" name="passengers[0][[last_name]"></td>
+            </tr>
+            <tr>
+                <td>document_number</td>
+                <td><input type="text" name="passengers[0][[document_number]"></td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="OK">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>

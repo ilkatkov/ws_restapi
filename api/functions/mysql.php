@@ -56,4 +56,29 @@ function flights($to, $from, $date1, $date2){
     }
     return $return_data;
 }
+
+function generateCode(){
+    $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $numChars = strlen($chars);
+    $string = '';
+    for ($i = 0; $i < 5; $i++) {
+    $string .= substr($chars, rand(1, $numChars) - 1, 1);
+    }
+    return $string;
+    }
+
+function booking($flight_from, $flight_back){
+    $id_from = $flight_from['id'];
+    $id_back = $flight_back['id'];
+    $date_from = $flight_from['date'];
+    $date_back = $flight_back['date'];
+    $time = (string)date("Y-m-d H:i:s");
+    $code = generateCode();
+    $link = connectDB();
+    $query_insert = "INSERT INTO bookings (flight_from, flight_back, date_from, date_back, code, created_at, updated_at) VALUES ('" . mysqli_real_escape_string($link, $id_from) . "', '" . mysqli_real_escape_string($link, $id_back) . "', '" . mysqli_real_escape_string($link, $date_from) . "', '" . mysqli_real_escape_string($link, $date_back) . "', '" . mysqli_real_escape_string($link, $code) . "', '" . mysqli_real_escape_string($link, $time) . "', '" . mysqli_real_escape_string($link, $time) . "')";
+    mysqli_query($link, $query_insert);
+    // var_dump($code);
+    return $code;
+
+}
 ?>
