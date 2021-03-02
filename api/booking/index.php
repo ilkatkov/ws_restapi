@@ -25,7 +25,7 @@ if (!empty($passengers)) {
 // если все поля не пустые, то отправляем запрос
 if (!empty($from['id']) && !empty($back['id']) && !empty($from['date']) && !empty($back['date']) && !empty($passengers) && $valid_passengers) {
     http_response_code(201);
-    $result = array("data" => array("code" => booking($from, $back)));
+    $result = array("data" => array("code" => booking($from, $back, $passengers)));
     // иначе отдаем ошибки
 } else {
     $document_number_errors = array();

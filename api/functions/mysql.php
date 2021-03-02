@@ -67,7 +67,7 @@ function generateCode(){
     return $string;
     }
 
-function booking($flight_from, $flight_back){
+function booking($flight_from, $flight_back, $passengers){
     $id_from = $flight_from['id'];
     $id_back = $flight_back['id'];
     $date_from = $flight_from['date'];
@@ -76,8 +76,24 @@ function booking($flight_from, $flight_back){
     $code = generateCode();
     $link = connectDB();
     $query_insert = "INSERT INTO bookings (flight_from, flight_back, date_from, date_back, code, created_at, updated_at) VALUES ('" . mysqli_real_escape_string($link, $id_from) . "', '" . mysqli_real_escape_string($link, $id_back) . "', '" . mysqli_real_escape_string($link, $date_from) . "', '" . mysqli_real_escape_string($link, $date_back) . "', '" . mysqli_real_escape_string($link, $code) . "', '" . mysqli_real_escape_string($link, $time) . "', '" . mysqli_real_escape_string($link, $time) . "')";
-    
     mysqli_query($link, $query_insert);
+
+    $query_select = "SELECT id FROM bookings WHERE code = '" .mysqli_real_escape_string($link, $code) . "'";
+    $result = mysqli_query($link, $query_select) or trigger_error(mysqli_error($link) . $query_select);
+    for ($data = []; $row = mysqli_fetch_assoc($result); $data[] = $row);
+    // var_dump($data);
+
+    $booking_id = (int)$data[0]['id'];
+    for ($row = 0; $row < count($passengers); $row++) {
+        $first_name = $passengers[$row]['first_name'];
+        $last_name = $passengers[$row]['last_name'];
+        $birth_date = $passengers[$row]['birth_date'];
+        $document_number = $passengers[$row]['document_number'];
+        $query_insert = "INSERT INTO passengers (booking_id, first_name, last_name, birth_date, document_number, created_at, updated_at) VALUES ('" . mysqli_real_escape_string($link, $booking_id) . "', '" . mysqli_real_escape_string($link, $first_name) . "', '" . mysqli_real_escape_string($link, $last_name) . "', '" . mysqli_real_escape_string($link, $birth_date) . "', '" . mysqli_real_escape_string($link, $document_number) . "', '" . mysqli_real_escape_string($link, $time) . "', '" . mysqli_real_escape_string($link, $time) . "')";
+        // echo $query_insert;
+        mysqli_query($link, $query_insert)  or die(mysqli_error($link));;
+    }
+
     // var_dump($code);
     return $code;
 
